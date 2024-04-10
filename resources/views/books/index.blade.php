@@ -1,9 +1,7 @@
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
 @extends('books.layout')
 
 @section('content')
-    <div class="container mx-auto">
+    <div class="container flex flex-col w-full p-6 mx-auto">
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-3xl">Librería Mongodb-Laravel</h2>
             <a href="{{ route('books.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Nuevo libro</a>

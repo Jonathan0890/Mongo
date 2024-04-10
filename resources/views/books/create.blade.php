@@ -1,21 +1,18 @@
 @extends('books.layout')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Registrar Nuevo Libro</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('books.index') }}"> Volver</a>
-            </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2">
+        <div class="flex justify-start lg:col-span-1">
+            <h2 class="text-2xl font-bold">Registrar Nuevo Libro</h2>
+        </div>
+        <div class="flex justify-end lg:col-span-1">
+            <a href="{{ route('books.index') }}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Volver</a>
         </div>
     </div>
 
-
     @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Whoops!</strong>
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -24,35 +21,24 @@
         </div>
     @endif
 
-
-    <form action="{{ route('books.store') }}" method="POST">
+    <form action="{{ route('books.store') }}" method="POST" class="mt-4">
         @csrf
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Título:</strong>
-                    <input type="text" name="nombre" class="form-control" placeholder="Título">
-                </div>
+        <div class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 md:grid-cols-3">
+            <div>
+                <label for="nombre" class="block text-sm font-medium text-gray-700">Título:</label>
+                <input type="text" name="nombre" id="nombre" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Título">
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Editorial:</strong>
-                    <input type="text" name="editorial" class="form-control" placeholder="Editorial">
-                </div>
+            <div>
+                <label for="editorial" class="block text-sm font-medium text-gray-700">Editorial:</label>
+                <input type="text" name="editorial" id="editorial" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Editorial">
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Detalle:</strong>
-                    <textarea class="form-control" style="height:150px" name="detalle" placeholder="Detalle"></textarea>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Guardar</button>
+            <div>
+                <label for="detalle" class="block text-sm font-medium text-gray-700">Detalle:</label>
+                <textarea name="detalle" id="detalle" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" rows="3" placeholder="Detalle"></textarea>
             </div>
         </div>
-
-
+        <div class="mt-4 flex justify-center">
+            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Guardar</button>
+        </div>
     </form>
-
-
 @endsection
